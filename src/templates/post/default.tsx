@@ -1,4 +1,5 @@
 import type { WpPage } from "@/lib/nextwp/types";
+import { Comments, CommentCount } from "@/components/comments";
 
 interface DefaultPostTemplateProps {
   uri: string;
@@ -14,11 +15,14 @@ export function DefaultPostTemplate({ uri, data }: DefaultPostTemplateProps) {
         <h1 className="text-4xl font-bold mb-4">
           {data?.title?.rendered || "Post"}
         </h1>
-        {data?.date && (
-          <time className="text-gray-600" dateTime={data.date}>
-            {new Date(data.date).toLocaleDateString()}
-          </time>
-        )}
+        <div className="flex items-center gap-4 text-gray-600">
+          {data?.date && (
+            <time dateTime={data.date}>
+              {new Date(data.date).toLocaleDateString()}
+            </time>
+          )}
+          {data?.id && <CommentCount postId={data.id} />}
+        </div>
       </header>
 
       <div className="prose max-w-none">
@@ -29,6 +33,9 @@ export function DefaultPostTemplate({ uri, data }: DefaultPostTemplateProps) {
           />
         )}
       </div>
+
+      {/* Comments Section */}
+      {data?.id && <Comments postId={data.id} />}
     </article>
   );
 }
