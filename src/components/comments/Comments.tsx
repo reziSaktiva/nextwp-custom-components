@@ -7,9 +7,11 @@ import type { Comment } from "./types";
 
 interface CommentsProps {
   postId: number;
+  status?: string;
 }
 
-export function Comments({ postId }: CommentsProps) {
+export function Comments({ postId, status }: CommentsProps) {
+  const disabled = status !== "publish" ? true : false;
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -54,7 +56,11 @@ export function Comments({ postId }: CommentsProps) {
     <div className="mt-8">
       <h3 className="text-2xl font-bold mb-4">Komentar ({comments.length})</h3>
 
-      <CommentForm postId={postId} onCommentAdded={handleCommentAdded} />
+      <CommentForm
+        disabled={disabled}
+        postId={postId}
+        onCommentAdded={handleCommentAdded}
+      />
 
       <CommentList
         comments={comments}

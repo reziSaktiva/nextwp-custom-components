@@ -35,7 +35,7 @@ export function DefaultPostTemplate({ uri, data }: DefaultPostTemplateProps) {
       </div>
 
       {/* Comments Section */}
-      {data?.id && <Comments postId={data.id} />}
+      {data?.id && <Comments status={data.status} postId={data.id} />}
     </article>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 interface CommentFormProps {
+  disabled: boolean;
   postId: number;
   parentId?: number;
   onCommentAdded: (comment: any) => void;
@@ -10,6 +11,7 @@ interface CommentFormProps {
 }
 
 export function CommentForm({
+  disabled,
   postId,
   parentId,
   onCommentAdded,
@@ -101,6 +103,7 @@ export function CommentForm({
               Nama *
             </label>
             <input
+              disabled={disabled}
               type="text"
               id="author_name"
               name="author_name"
@@ -119,6 +122,7 @@ export function CommentForm({
               Email
             </label>
             <input
+              disabled={disabled}
               type="email"
               id="author_email"
               name="author_email"
@@ -137,6 +141,7 @@ export function CommentForm({
             Komentar *
           </label>
           <textarea
+            disabled={disabled}
             id="content"
             name="content"
             value={formData.content}
@@ -157,7 +162,7 @@ export function CommentForm({
         <div className="flex gap-3">
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || disabled}
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Mengirim..." : "Kirim Komentar"}
@@ -171,6 +176,13 @@ export function CommentForm({
             >
               Batal
             </button>
+          )}
+
+          {disabled && (
+            <div className="text-sm text-yellow-700 bg-yellow-50 border border-yellow-200 rounded-md p-3">
+              Tidak bisa mengirim komentar pada postingan yang masih berstatus
+              draft
+            </div>
           )}
         </div>
       </form>
