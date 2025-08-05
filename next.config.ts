@@ -7,7 +7,7 @@ const wpBaseUrl = process.env.NEXT_PUBLIC_WP_URL?.replace(
 
 const nextConfig = {
   transpilePackages: ["@nextwp/core"],
-  allowedDevOrigins: ["192.168.20.107", "192.168.20.11"],
+  allowedDevOrigins: ["192.168.50.52", "192.168.20.11"],
   images: {
     remotePatterns: [
       {

@@ -7,8 +7,6 @@ interface DefaultPostTemplateProps {
 }
 
 export function DefaultPostTemplate({ uri, data }: DefaultPostTemplateProps) {
-  console.log("Post data:", data);
-
   return (
     <article className="container mx-auto px-4 py-8 max-w-4xl">
       <header className="mb-8">
