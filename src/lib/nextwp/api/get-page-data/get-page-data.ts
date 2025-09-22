@@ -182,7 +182,6 @@ function extractPageNumberFromUri(uri: string): {
 }
 
 async function getTaxonomyPage({
-  uri,
   taxonomy,
   pageNumber,
 }: {

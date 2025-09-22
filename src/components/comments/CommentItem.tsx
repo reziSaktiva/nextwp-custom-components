@@ -75,6 +75,7 @@ export function CommentItem({
             parentId={comment.id}
             onCommentAdded={onCommentAdded}
             onCancel={() => setReplyingTo(null)}
+            disabled={false}
           />
         </div>
       )}

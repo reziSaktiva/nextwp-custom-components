@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 // Export all block components here
@@ -16,10 +17,10 @@ export const TextBlock = ({ content }: { content?: string }) => (
   </div>
 );
 
-export const ImageBlock = ({ image }: { image?: any }) => (
+export const ImageBlock = ({ image }: { image?: { url: string, alt: string } }) => (
   <div className="my-8">
     {image?.url && (
-      <img
+      <Image
         src={image.url}
         alt={image.alt || ""}
         className="w-full h-auto rounded-lg"
@@ -27,10 +28,3 @@ export const ImageBlock = ({ image }: { image?: any }) => (
     )}
   </div>
 );
-
-// Add more blocks as needed
-export default {
-  HeroBlock,
-  TextBlock,
-  ImageBlock,
-};

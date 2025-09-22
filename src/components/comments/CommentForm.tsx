@@ -6,6 +6,7 @@ interface CommentFormProps {
   disabled: boolean;
   postId: number;
   parentId?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onCommentAdded: (comment: any) => void;
   onCancel?: () => void;
 }

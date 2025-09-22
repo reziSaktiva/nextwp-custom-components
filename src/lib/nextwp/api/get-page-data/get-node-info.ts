@@ -1,4 +1,3 @@
-import { debug } from "../../utils/debug-log";
 import type { PostType } from "../../types";
 import { getPostTypes } from "../get-post-types";
 import { getSingleItem } from "../get-single-item";

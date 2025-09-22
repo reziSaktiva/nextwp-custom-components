@@ -14,29 +14,30 @@ export function Comments({ postId, status }: CommentsProps) {
   const disabled = status !== "publish" ? true : false;
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchComments = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(`/api/comments/${postId}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch comments");
-      }
-      const data = await response.json();
-      setComments(data);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load comments");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [, setError] = useState<string | null>(null);
 
   const handleCommentAdded = (newComment: Comment) => {
     setComments((prev) => [newComment, ...prev]);
   };
 
   useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`/api/comments/${postId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch comments");
+        }
+        const data = await response.json();
+        setComments(data);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : "Failed to load comments"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchComments();
   }, [postId]);
 

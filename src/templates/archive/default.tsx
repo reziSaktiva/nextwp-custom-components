@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import Image from "next/image";
 import type { TemplateProps } from "@/lib/nextwp/utils/get-template";
 import type { ArchivePageData } from "@/lib/nextwp/types";
-import { swapWpUrl, getFeaturedImage } from "@/lib/nextwp";
+import { getFeaturedImage } from "@/lib/nextwp";
 
 interface BlogArchiveData extends Omit<ArchivePageData, "items"> {
   items?: any[];

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { debug } from "../utils/debug-log";
 
@@ -60,7 +61,6 @@ export function FlexibleContent({
         return (
           <Component
             firstItem={index === 0}
-            // eslint-disable-next-line react/no-array-index-key -- there is no unique id for the row
             key={index}
             {...row}
             {...data}

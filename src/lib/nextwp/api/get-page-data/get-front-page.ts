@@ -1,6 +1,5 @@
 import type { WpPage } from "../../types";
 import { getSiteSettings } from "../get-site-settings";
-import { getSingleItem } from "../get-single-item";
 
 export async function getFrontPage(): Promise<{ data?: WpPage } | null> {
   try {
